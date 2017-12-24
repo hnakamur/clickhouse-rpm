@@ -18,6 +18,8 @@ Source1:        clickhouse.service
 Source2:        clickhouse.tmpfilesd
 Source3:        logrotate
 
+BuildRequires:  epel-release
+BuildRequires:  make
 BuildRequires:  cmake
 BuildRequires:  devtoolset-6-gcc-c++
 BuildRequires:  libicu-devel
