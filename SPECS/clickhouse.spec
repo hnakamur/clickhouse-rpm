@@ -106,7 +106,7 @@ cd build
 %clean
 %{__rm} -rf %{buildroot}
 
-%pre
+%pre server
 # Add the "clickhouse" user
 getent group %{clickhouse_group} >/dev/null || groupadd -r %{clickhouse_group}
 getent passwd %{clickhouse_user} >/dev/null || \
@@ -114,17 +114,17 @@ getent passwd %{clickhouse_user} >/dev/null || \
     --no-create-home -c "clickhouse user"  %{clickhouse_user}
 exit 0
 
-%post
+%post server
 %if 0%{?rhel}  == 7
 %systemd_post clickhouse.service
 %endif
 
-%preun
+%preun server
 %if 0%{?rhel}  == 7
 %systemd_preun clickhouse.service
 %endif
 
-%postun
+%postun server
 %if 0%{?rhel}  == 7
 %systemd_postun_with_restart clickhouse.service
 %endif
