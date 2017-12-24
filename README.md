@@ -3,6 +3,11 @@ clickhouse-rpm
 
 A Dockerfile to build [yandex/ClickHouse: ClickHouse is a free analytic DBMS for big data.](https://github.com/yandex/ClickHouse) rpm for CentOS 7 using [fedora copr](https://copr.fedoraproject.org/).
 
+## NOTE: build dependencies
+
+If you build this rpm by other ways than the following steps using `docker_wrapper.sh`, you may need to install `make` and `epel-release`.
+Two packages `libzstd-devel` and `re2-devel` are installed from [EPEL - Fedora Project Wiki](https://fedoraproject.org/wiki/EPEL) during build.
+
 ## Setup
 
 1. Copy `.envrc.example` to `.envrc`.
