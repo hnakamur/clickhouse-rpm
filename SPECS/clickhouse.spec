@@ -6,7 +6,7 @@
 
 Name:           clickhouse
 Version:        1.1.54236
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A free analytic DBMS for big data
 Group:          Applications/Databases
 License:        Apache-2.0
@@ -38,14 +38,13 @@ of real time generation of analytical data reports using SQL queries.
 
 %package     common
 Summary:     clickhouse common files
-Requires:    %{name} = %{version}-%{release}
 
 %description common
 %{summary}.
 
 %package     server
 Summary:     clickhouse server files
-Requires:    %{name} = %{version}-%{release}
+Requires:    %{name}-common = %{version}-%{release}
 %if 0%{?rhel}  == 7
 Requires(post): systemd
 Requires(preun): systemd
@@ -57,7 +56,7 @@ Requires(postun): systemd
 
 %package     client
 Summary:     clickhouse client files
-Requires:    %{name} = %{version}-%{release}
+Requires:    %{name}-common = %{version}-%{release}
 
 %description client
 %{summary}.
@@ -164,5 +163,8 @@ exit 0
 
 
 %changelog
+* Sun Dec 24 2017 Hiroaki Nakamura <hnakamur@gmail.com> - 1.1.54236-2
+- Fix requires
+
 * Mon Jun 12 2017 Hiroaki Nakamura <hnakamur@gmail.com> - 1.1.54236-1
 - Initial packaging
