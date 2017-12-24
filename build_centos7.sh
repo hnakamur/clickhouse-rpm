@@ -13,7 +13,5 @@ done
 rm -rf ~/rpmbuild/
 mkdir -p ~/rpmbuild/{RPMS,SRPMS,BUILD,SOURCES,SPECS}
 cp SOURCES/* ~/rpmbuild/SOURCES
-ls
-pwd
 spectool -g -R SPECS/clickhouse.spec
 rpmbuild -bb SPECS/clickhouse.spec
